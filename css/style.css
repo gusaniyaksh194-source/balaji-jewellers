@@ -1,0 +1,648 @@
+:root {
+  --white: #ffffff;
+  --ivory: #fbf7ee;
+  --cream: #f4ead8;
+  --gold: #c9952c;
+  --gold-dark: #8b6218;
+  --charcoal: #25211c;
+  --muted: #6f665b;
+  --line: #e8dcc8;
+  --shadow: 0 18px 45px rgba(71, 49, 16, 0.12);
+}
+
+/* Base layout and typography */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--white);
+  color: var(--charcoal);
+  font-family: "Manrope", Arial, sans-serif;
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.narrow {
+  max-width: 820px;
+}
+
+/* Sticky header and navigation */
+.site-header {
+  backdrop-filter: blur(18px);
+  background: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid rgba(201, 149, 44, 0.2);
+  left: 0;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 50;
+}
+
+.navbar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 82px;
+}
+
+.brand {
+  align-items: center;
+  display: inline-flex;
+  gap: 14px;
+}
+
+.brand-mark {
+  align-items: center;
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #f7d687, var(--gold-dark));
+  border-radius: 50%;
+  color: var(--white);
+  display: inline-flex;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  justify-content: center;
+  width: 46px;
+}
+
+.brand strong {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.brand small {
+  color: var(--muted);
+  display: block;
+  font-size: 0.73rem;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  align-items: center;
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+  position: relative;
+}
+
+.nav-links a::after {
+  background: var(--gold);
+  bottom: -8px;
+  content: "";
+  height: 2px;
+  left: 0;
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+  width: 100%;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--charcoal);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  transform: scaleX(1);
+}
+
+.nav-toggle {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  display: none;
+  height: 44px;
+  width: 44px;
+}
+
+.nav-toggle span {
+  background: var(--charcoal);
+  display: block;
+  height: 2px;
+  margin: 7px auto;
+  transition: 0.25s ease;
+  width: 25px;
+}
+
+/* Home hero */
+.hero {
+  min-height: calc(100vh - 82px);
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-media {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.82) 42%, rgba(255, 255, 255, 0.2) 100%),
+    url("../images/hero-jewellery.png") center right / cover no-repeat;
+  inset: 0;
+  position: absolute;
+}
+
+.hero-content {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 82px);
+  padding-bottom: 76px;
+  padding-top: 76px;
+  position: relative;
+}
+
+.eyebrow {
+  color: var(--gold-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+h1 {
+  font-size: clamp(3.2rem, 6vw, 6.7rem);
+  max-width: 760px;
+}
+
+h2 {
+  font-size: clamp(2.15rem, 4vw, 4rem);
+}
+
+h3 {
+  font-size: 1.65rem;
+}
+
+.hero-text {
+  color: var(--muted);
+  font-size: 1.12rem;
+  margin: 24px 0 34px;
+  max-width: 570px;
+}
+
+.hero-actions,
+.visit-content {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.btn {
+  align-items: center;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  display: inline-flex;
+  font-weight: 800;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--gold);
+  box-shadow: 0 12px 25px rgba(201, 149, 44, 0.25);
+  color: var(--white);
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: var(--gold);
+  color: var(--gold-dark);
+}
+
+/* Reusable sections and cards */
+.section {
+  padding: 88px 0;
+}
+
+.intro-section,
+.values-section,
+.visit-band {
+  background: var(--ivory);
+}
+
+.split {
+  display: grid;
+  gap: 48px;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.7fr);
+}
+
+.split p:last-child {
+  color: var(--muted);
+  font-size: 1.06rem;
+}
+
+.section-heading {
+  margin-bottom: 34px;
+  max-width: 720px;
+}
+
+.card-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.collection-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.collection-card img {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.collection-card div {
+  padding: 26px;
+}
+
+.collection-card p,
+.feature-row p,
+.story-grid p,
+.value-grid p,
+.page-hero p,
+.contact-list span,
+.footer-grid p {
+  color: var(--muted);
+}
+
+.visit-content {
+  justify-content: space-between;
+}
+
+/* Interior page layouts */
+.page-hero {
+  background:
+    linear-gradient(135deg, rgba(251, 247, 238, 0.96), rgba(255, 255, 255, 0.86)),
+    url("../images/bridal-collection.png") center / cover no-repeat;
+  padding: 112px 0 86px;
+}
+
+.page-hero p {
+  font-size: 1.06rem;
+  margin-top: 20px;
+}
+
+.story-grid,
+.contact-grid {
+  align-items: center;
+  display: grid;
+  gap: 52px;
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.story-grid img {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  min-height: 420px;
+  object-fit: cover;
+}
+
+.story-grid p + p {
+  margin-top: 18px;
+}
+
+.value-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.value-grid article {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.value-grid span {
+  color: var(--gold);
+  display: inline-block;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+
+.collection-list {
+  display: grid;
+  gap: 42px;
+}
+
+.feature-row {
+  align-items: center;
+  display: grid;
+  gap: 46px;
+  grid-template-columns: 0.9fr 1fr;
+}
+
+.feature-row.reverse {
+  grid-template-columns: 1fr 0.9fr;
+}
+
+.feature-row.reverse img {
+  order: 2;
+}
+
+.feature-row img {
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+  width: 100%;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.gallery-item {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item.large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.gallery-item img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.gallery-item figcaption {
+  background: rgba(37, 33, 28, 0.76);
+  bottom: 0;
+  color: var(--white);
+  font-weight: 800;
+  left: 0;
+  padding: 14px 18px;
+  position: absolute;
+  right: 0;
+}
+
+/* Contact form */
+.contact-grid {
+  align-items: stretch;
+}
+
+.contact-panel,
+.contact-form {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 34px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 18px;
+  list-style: none;
+  margin: 24px 0 28px;
+}
+
+.contact-list li {
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.contact-list strong,
+.contact-list span {
+  display: block;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: 800;
+  margin: 18px 0 7px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: var(--charcoal);
+  font: inherit;
+  padding: 13px 14px;
+  width: 100%;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--gold);
+  outline: 3px solid rgba(201, 149, 44, 0.15);
+}
+
+.contact-form button {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.form-note {
+  color: var(--gold-dark);
+  font-weight: 700;
+  margin-top: 14px;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 56px 0 20px;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: 1.4fr 0.8fr 0.8fr;
+}
+
+.footer-grid h2,
+.footer-grid h3 {
+  margin-bottom: 12px;
+}
+
+.footer-grid p,
+.footer-grid a {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.footer-grid a {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  color: rgba(255, 255, 255, 0.62);
+  margin: 36px auto 0;
+  max-width: 1180px;
+  padding: 20px 24px 0;
+}
+
+/* Responsive navigation and layouts */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    display: none;
+    gap: 0;
+    left: 0;
+    padding: 12px 24px 24px;
+    position: absolute;
+    right: 0;
+    top: 82px;
+  }
+
+  .nav-links.open {
+    display: block;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 13px 0;
+  }
+
+  .hero-media {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.94) 0%, rgba(255, 255, 255, 0.78) 55%, rgba(255, 255, 255, 0.45) 100%),
+      url("../images/hero-jewellery.png") center / cover no-repeat;
+  }
+
+  .split,
+  .card-grid,
+  .story-grid,
+  .value-grid,
+  .feature-row,
+  .feature-row.reverse,
+  .contact-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-row.reverse img {
+    order: 0;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .container {
+    padding: 0 18px;
+  }
+
+  .brand small {
+    display: none;
+  }
+
+  .brand strong {
+    font-size: 1.22rem;
+  }
+
+  .hero,
+  .hero-content {
+    min-height: 680px;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .page-hero {
+    padding: 86px 0 66px;
+  }
+
+  .hero-actions,
+  .visit-content {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-item.large {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
